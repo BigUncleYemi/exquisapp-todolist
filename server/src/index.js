@@ -1,11 +1,17 @@
 // Require the framework and instantiate it
+const routes = require("./routes");
+const path = require("path");
 const fastify = require('fastify')({
   logger: true
 })
 
+routes.forEach((route, index) => {
+ fastify.route(route)
+})
+
 // Declare a route
 fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
+  return { hello: 'world todo api' }
 })
 
 const mongoose = require('mongoose')
