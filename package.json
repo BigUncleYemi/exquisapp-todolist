@@ -21,12 +21,14 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },
+  "proxy": "http://localhost:4908",
   "scripts": {
-    "start": "react-scripts start",
-    "server": "./node_modules/nodemon/bin/nodemon.js ./server/src/index.js",
+    "app": "react-scripts start",
+    "server": "node ./server/src/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "npm-run-all -p server app"
   },
   "eslintConfig": {
     "extends": "react-app"

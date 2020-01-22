@@ -11,7 +11,7 @@ function App() {
   async function fetchTodoList() {
     try {
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:3000/list`);
+      const response = await fetch(`http://localhost:4908/list`);
       const results = await response.json();
       console.log(results);
       handleTodo(results.data);
@@ -28,7 +28,7 @@ function App() {
   const AddTodo = async todoItem => {
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:3000/list/new`, {
+      const response = await fetch(`http://localhost:4908/list/new`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -47,7 +47,7 @@ function App() {
   const EditTodo = async (todoItem, id) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:3000/list/${id}`, {
+      const response = await fetch(`http://localhost:4908/list/${id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -71,7 +71,7 @@ function App() {
     try {
       const newTodo = todoList.filter(item => item._id !== _id);
       handleTodo(newTodo);
-      const response = await fetch(`http://127.0.0.1:3000/list/${_id}`, {
+      const response = await fetch(`http://localhost:4908/list/${_id}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
@@ -90,7 +90,7 @@ function App() {
   const getTodo = async id => {
     try {
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:3000/list/${id}`);
+      const response = await fetch(`http://localhost:4908/list/${id}`);
       const results = await response.json();
       console.log(results);
       handleNewTodo(results.data);
