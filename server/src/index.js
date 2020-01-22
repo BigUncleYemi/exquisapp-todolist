@@ -8,19 +8,24 @@ routes.forEach((route, index) => {
 });
 
 const swagger = require("./config/swagger");
-fastify.register(require("fastify-swagger"), swagger.options).register(require('fastify-cors'));
+fastify
+  .register(require("fastify-swagger"), swagger.options)
+  .register(require("fastify-cors"));
 
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost/tododlist", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb://localhost/tododlist", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log("MongoDB connected…"))
   .catch(err => console.log(err));
 
 // Run the server!
 const start = async () => {
   try {
-    await fastify.listen(3000)
-    fastify.swagger()
+    await fastify.listen(3000);
+    fastify.swagger();
     fastify.log.info(`server listening on ${fastify.server.address().port}`);
   } catch (err) {
     fastify.log.error(err);
