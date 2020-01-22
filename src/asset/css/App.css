@@ -1,0 +1,9 @@
+.add-todo{
+    top: 85%;
+    position: fixed;
+    right: 50px;
+}
+
+.add-todo > button[type="button"]{
+    font-size: 22px !important;
+}
