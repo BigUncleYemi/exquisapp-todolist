@@ -12,7 +12,7 @@ function TodoCard({item, deleteTodo, editItem, viewItem}) {
         <button onClick={e => { viewItem(item._id); $("#EditTodoInputModal").modal("show")}} type="button" title="view" className="btn bg-transparent border-0 btn-light m-2 p-0">&#128065;</button>
       </div>
       <div className="card-body mt-4 mb-2">
-        <h5 className="card-title">{item.title}</h5>
+        <h5 className="card-title font-weight-bold">{item.title}</h5>
         <p className="card-text">{item.desc}</p>
         <p className="card-text"><small className="text-muted">{moment(item.date).format('MMMM Do YYYY')}, {item.time.toString()}</small></p>
       </div>

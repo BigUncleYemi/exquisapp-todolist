@@ -104,14 +104,19 @@ function App() {
   }
   
   return (
-    <div className="container-fluid position-relative" style={{ minHeight: "100vh" }}>
+    <div className="container-fluid position-relative p-0" style={{ minHeight: "100vh" }}>
       {loading && <div className="progress">
         <div className="progress-bar bg-primary w-100 progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" 
         />
       </div>}
+      <div className="row my-3">
+        <div className="col-sm-12 text-left  shadow-sm">
+          <h1 className="font-weight-light px-4 py-3">Exquisapp Todolist</h1>
+        </div>
+      </div>
       <EditTodoInputModal item={newTodo} editTodo={EditTodo}  />
       <TodoInputModal addTodo={AddTodo} />
-      <div className="card-columns p-5">
+      <div className="card-columns px-5 py-4">
         {todoList.map((item, i) => (
           <div key={i} className="py-2">
             <TodoCard item={item} deleteTodo={deleteTodo} editItem={handleNewTodo} viewItem={getTodo} />
