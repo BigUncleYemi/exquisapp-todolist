@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const todoSchema = new mongoose.Schema({
   title: {type: String, required: true},
   desc: {type: String, required: false},
-  Date: {type: Date, required: true},
+  date: {type: String, required: true},
   time: {type: String, required: true},
   edited: { type: Boolean, default: false }
 });

@@ -14,7 +14,7 @@ const routes = [
   },
   {
     method: "POST",
-    url: "/list",
+    url: "/list/new",
     handler: todoController.addTodo
   },
   {

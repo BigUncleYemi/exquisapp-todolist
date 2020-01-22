@@ -7,7 +7,8 @@ const TodoList = require("../models/todo");
 exports.getTodoList = async (req, res) => {
   try {
     const todosList = await TodoList.find();
-    return todosList;
+    const data = {data: todosList}
+    return data;
   } catch (err) {
     throw boom.boomify(err);
   }
@@ -17,8 +18,9 @@ exports.getTodoList = async (req, res) => {
 exports.getSingleTodo = async (req, res) => {
   try {
     const id = req.params.id;
-    const todosList = await TodoList.findById(id);
-    return todosList;
+    const todoItem = await TodoList.findById(id);
+    const data = {data: todoItem}
+    return data;
   } catch (err) {
     throw boom.boomify(err);
   }
@@ -27,8 +29,10 @@ exports.getSingleTodo = async (req, res) => {
 // Add a new Todo
 exports.addTodo = async (req, res) => {
   try {
-    const todosList = new TodoList({ ...req.body });
-    return todosList.save();
+    const todoItem = new TodoList({ ...req.body });
+    const newTodo = await todoItem.save()
+    const data = { data: newTodo }
+    return data;
   } catch (err) {
     throw boom.boomify(err);
   }
@@ -43,7 +47,7 @@ exports.updateTodo = async (req, res) => {
     const update = await TodoList.findByIdAndUpdate(id, updateData, {
       new: true
     });
-    return update;
+    return {data: update};
   } catch (err) {
     throw boom.boomify(err);
   }
@@ -54,7 +58,7 @@ exports.deleteTodo = async (req, res) => {
   try {
     const id = req.params.id;
     const todo = await TodoList.findByIdAndRemove(id);
-    return todo;
+    return { data: todo};
   } catch (err) {
     throw boom.boomify(err);
   }
